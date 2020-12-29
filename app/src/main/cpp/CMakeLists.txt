@@ -23,6 +23,31 @@ add_library( # Sets the name of the library.
              # Provides a relative path to your source file(s).
              native-lib.cpp
              PngPreviewController.cpp
+        ./librenderer/egl_core.cpp
+        ./librenderer/pic_preview_controller.cpp
+        ./librenderer/pic_preview_render.cpp
+        ./librenderer/pic_preview_texture.cpp
+        ./librenderer/rgba_frame.cpp
+        ./3rdparty/libpng/png_decoder.cpp
+        ./3rdparty/libpng/example.c
+        ./3rdparty/libpng/image.c
+        ./3rdparty/libpng/png.c
+        ./3rdparty/libpng/pngerror.c
+        ./3rdparty/libpng/pngget.c
+        ./3rdparty/libpng/pngmem.c
+        ./3rdparty/libpng/pngpread.c
+        ./3rdparty/libpng/pngread.c
+        ./3rdparty/libpng/pngrio.c
+        ./3rdparty/libpng/pngrtran.c
+        ./3rdparty/libpng/pngrutil.c
+        ./3rdparty/libpng/pngset.c
+        ./3rdparty/libpng/pngtrans.c
+        ./3rdparty/libpng/pngwio.c
+        ./3rdparty/libpng/pngwrite.c
+        ./3rdparty/libpng/pngwtran.c
+        ./3rdparty/libpng/pngwutil.c
+
+
 
         )
 
@@ -31,6 +56,10 @@ add_library( # Sets the name of the library.
 # default, you only need to specify the name of the public NDK library
 # you want to add. CMake verifies that the library exists before
 # completing its build.
+include_directories(./librenderer)
+include_directories(./libcommon)
+include_directories(./3rdparty/libpng)
+
 
 find_library( # Sets the name of the path variable.
               log-lib
@@ -45,7 +74,10 @@ find_library( # Sets the name of the path variable.
 
 target_link_libraries( # Specifies the target library.
                        native-lib
-
-                       # Links the target library to the log library
+        -landroid #native_window
+        -lz
+        -lGLESv2
+        -lEGL
+        # Links the target library to the log library
                        # included in the NDK.
                        ${log-lib} )
