@@ -8,16 +8,16 @@
 
 static ANativeWindow *window = 0;
 static PicPreviewController *controller = 0;
-
-JNIEXPORT void JNICALL Java_com_phuket_tour_opengl_renderer_PngPreviewController_init
+extern "C"
+JNIEXPORT void JNICALL Java_com_a_news_nativeproject_PngPreviewController_init
 (JNIEnv * env, jobject obj, jstring pngFilePathParam) {
 	controller = new PicPreviewController();
 	char* pngFilePath = (char*) env->GetStringUTFChars(pngFilePathParam, NULL);
 	controller->start(pngFilePath);
 	env->ReleaseStringUTFChars(pngFilePathParam, pngFilePath);
 }
-
-JNIEXPORT void JNICALL Java_com_phuket_tour_opengl_renderer_PngPreviewController_setSurface
+extern "C"
+JNIEXPORT void JNICALL Java_com_a_news_nativeproject_PngPreviewController_setSurface
 (JNIEnv * env, jobject obj, jobject surface) {
 	if (surface != 0 && NULL != controller) {
 		window = ANativeWindow_fromSurface(env, surface);
@@ -29,15 +29,15 @@ JNIEXPORT void JNICALL Java_com_phuket_tour_opengl_renderer_PngPreviewController
 		window = 0;
 	}
 }
-
-JNIEXPORT void JNICALL Java_com_phuket_tour_opengl_renderer_PngPreviewController_resetSize
+extern "C"
+JNIEXPORT void JNICALL Java_com_a_news_nativeproject_PngPreviewController_resetSize
 (JNIEnv * env, jobject obj, jint width, jint height) {
 	if (NULL != controller) {
 		controller->resetSize(width, height);
 	}
 }
-
-JNIEXPORT void JNICALL Java_com_phuket_tour_opengl_renderer_PngPreviewController_stop
+extern "C"
+JNIEXPORT void JNICALL Java_com_a_news_nativeproject_PngPreviewController_stop
 (JNIEnv * env, jobject obj) {
 	if (NULL != controller) {
 		controller->stop();

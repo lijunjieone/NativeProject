@@ -1,8 +1,11 @@
 package com.a.news.nativeproject
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -11,6 +14,12 @@ class MainActivity : AppCompatActivity() {
 
         // Example of a call to a native method
         findViewById<TextView>(R.id.sample_text).text = stringFromJNI()
+
+        val go_btn = findViewById<View>(R.id.sample_text)
+        go_btn.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this@MainActivity, PngPreviewActivity::class.java)
+            startActivity(intent)
+        })
     }
 
     /**
