@@ -1,2 +1,3 @@
+include ':mp3encode3'
 include ':app'
 rootProject.name = "NativeProject"
