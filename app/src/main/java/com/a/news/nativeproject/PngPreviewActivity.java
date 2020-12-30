@@ -9,19 +9,24 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
+
+import java.io.File;
 
 public class PngPreviewActivity extends Activity {
 
 	private SurfaceView surfaceView;
 	private RelativeLayout preview_parent_layout;
 
-	private String picPath = "/mnt/sdcard/1.png";
+	private String picPath = "/sdcard/Pictures/1.png";
 	
 	private PngPreviewController pngPreviewController;
 	private Callback previewCallback = new Callback() {
 
 		public void surfaceCreated(SurfaceHolder holder) {
 			pngPreviewController = new PngPreviewController();
+			File f = new File(picPath);
+//			Toast.makeText(getBaseContext(),"f"+f.exists()+",r:"+f.canRead(),Toast.LENGTH_SHORT).show();
 			pngPreviewController.init(picPath);
 			pngPreviewController.setSurface(holder.getSurface());
 		}
