@@ -1,3 +1,4 @@
+include ':poke_ar'
 include ':ffmpeg'
 include ':Live'
 include ':filemanager'

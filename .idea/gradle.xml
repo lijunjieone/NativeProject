@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/ffmpeg" />
             <option value="$PROJECT_DIR$/filemanager" />
             <option value="$PROJECT_DIR$/mp3encode3" />
+            <option value="$PROJECT_DIR$/poke_ar" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
